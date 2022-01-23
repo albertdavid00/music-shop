@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
+import PageNotFound from "./pages/PageNotFound";
+import PrivateRoute from "./components/PrivateRoute";
+import ForgotPassword from "./pages/ForgotPassword";
+
+
+import { AuthProvider } from "./contexts/AuthContext";
+import Guitars from "./pages/Guitars";
+import ShoppingCart from "./pages/ShoppingCart";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+     
+        <Router>
+          <AuthProvider>
+            <Switch>
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <PrivateRoute path="/profile" component={Profile} />
+              <PrivateRoute path="/shopping-cart" component={ShoppingCart} />
+              <Route path="/guitars" component={Guitars} />
+              <Route path= '/forgot-password' component={ForgotPassword} />
+              <Route exact path="/" component={Guitars} />
+              <Route path="*" component={PageNotFound} />
+            </Switch>
+          </AuthProvider>
+        </Router>
   );
 }
-
-export default App;

@@ -8,28 +8,30 @@ import PageNotFound from "./pages/PageNotFound";
 import PrivateRoute from "./components/PrivateRoute";
 import ForgotPassword from "./pages/ForgotPassword";
 
-
 import { AuthProvider } from "./contexts/AuthContext";
 import Guitars from "./pages/Guitars";
 import ShoppingCart from "./pages/ShoppingCart";
+// import { ShoppingCartProvider } from "./contexts/ShoppingCartContext";
+import { Provider } from "react-redux";
+import store  from "./store";
 
 export default function App() {
   return (
-    
-     
-        <Router>
-          <AuthProvider>
-            <Switch>
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-              <PrivateRoute path="/profile" component={Profile} />
-              <PrivateRoute path="/shopping-cart" component={ShoppingCart} />
-              <Route path="/guitars" component={Guitars} />
-              <Route path= '/forgot-password' component={ForgotPassword} />
-              <Route exact path="/" component={Guitars} />
-              <Route path="*" component={PageNotFound} />
-            </Switch>
-          </AuthProvider>
-        </Router>
+    <Provider store={store}>
+      <Router>
+        <AuthProvider>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/shopping-cart" component={ShoppingCart} />
+            <Route path="/guitars" component={Guitars} />
+            <Route path="/forgot-password" component={ForgotPassword} />
+            <Route exact path="/" component={Guitars} />
+            <Route path="*" component={PageNotFound} />
+          </Switch>
+        </AuthProvider>
+      </Router>
+    </Provider>
   );
 }

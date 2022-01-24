@@ -37,3 +37,40 @@
 .filtersContainer{
     width:40%;
 }
+
+.divLink{
+    cursor: pointer;
+    
+}
+.divNavMarg{
+    margin-left:20px;
+}
+
+.shopping-cart-container{
+    background:rgba(0, 0, 0, 0.12);
+    border-radius: 1.5%;
+    margin-bottom: 40px;
+    box-shadow: 20px 20px 20px 10px rgb(138, 116, 84);
+    /* box-shadow:20px 20px 20px rgb(209, 183, 134);   */
+}
+
+.total-container{
+    background-color: #ffe499;
+    text-align: left;
+    padding: 10px 30px 10px 30px;
+    margin-left: 20px;
+    border-radius: 3%;
+    border: 2px solid black;
+    /* box-shadow:20px 20px 20px grey;   */
+}
+.big-container{
+    width: 90%;
+}
+.cart-big-div{
+    width: 70%;
+}
+.filter-container{
+    background-color: rgba(124, 67, 20, 0.2);
+    width: 100%;
+    border-radius: 2px;
+}

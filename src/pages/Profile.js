@@ -49,7 +49,7 @@ const Profile = () => {
         style={{ minHeight: "80vh" }}
       >
         <div className="w-100" style={{ maxWidth: "400px" }}>
-          <Card className="border border-5 rounded">
+          <Card border="dark" className="border border-5 rounded">
             <Card.Body className="cardBody">
               <div className="profileTitleContainer">
                 <h2 className="text-center mb-2"> Profile </h2>

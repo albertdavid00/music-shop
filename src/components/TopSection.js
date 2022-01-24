@@ -3,37 +3,58 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-
+import { useSelector } from "react-redux";
+import { shoppingCartSelector } from "../store/shoppingcart.slice";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function TopSection() {
   const { currentUser } = useAuth();
+  const shoppingCart = useSelector(shoppingCartSelector);
+  const history = useHistory();
+
+  const handleClick = (path) => {
+    history.push(`${path}`);
+  };
+
+  const getNumOfItems = () => {
+    let numItems = 0;
+    shoppingCart.forEach(item =>{
+      numItems += parseInt(item.qty);
+    })
+    return numItems;
+  }
+
   return (
     <>
-      <Navbar style={{ backgroundColor: "#ffe499" }} variant="light">
+      <Navbar style={{ backgroundColor: "#ffe499", borderBottom: '2px solid'}} variant="light">
         <Container>
-          <Navbar.Brand href="/">
-            <FontAwesomeIcon size="lg" icon={faGuitar} />
-            <span className="m-1">Guitar Shop</span>
-          </Navbar.Brand>
+          <div className="divLink" onClick={() => handleClick("/")}>
+            <FontAwesomeIcon size="2x" icon={faGuitar} />
+            <span className="m-1 h2">Guitar Shop</span>
+          </div>
           <Nav className="ms-auto">
             {currentUser && (
               <>
-                <Nav.Link href="/profile">Hi, {currentUser.email}</Nav.Link>
-                <Nav.Link href="/shopping-cart">
-                  <FontAwesomeIcon size='lg' icon={faShoppingCart}/>
-                </Nav.Link>
+                <div className="divLink" onClick={() => handleClick("/profile")}>
+                  Hi, {currentUser.email}!
+                </div>
+                <div className="divLink divNavMarg" onClick={() => handleClick('/shopping-cart')}>
+                  <FontAwesomeIcon size="lg" icon={faShoppingCart} />
+                  {getNumOfItems()}
+                </div>
               </>
             )}
             {!currentUser && (
-              <Nav.Link href="/login" className="ml-auto">
+              <div className="divLink ml-auto" onClick={() => handleClick("/login")}>
                 {" "}
                 Login{" "}
-              </Nav.Link>
+              </div>
             )}
             {!currentUser && (
-              <Nav.Link href="/register" className="ml-auto">
+              <div className="divLink divNavMarg" onClick={() => handleClick("/register")}>
                 {" "}
                 Register{" "}
-              </Nav.Link>
+              </div>
             )}
           </Nav>
         </Container>

@@ -1,8 +1,10 @@
 import React from "react";
 import { Button, Card, Container } from "react-bootstrap";
 import "../styles.css";
+import { IoBagRemove } from 'react-icons/io5';
+
 export default function GuitarCard(props) {
-  const { guitar, handleOnAddToCart, hiddenButton } = props;
+  const { guitar, handleOnAddToCart, hiddenButton, hiddenRemoveFromCart, handleOnRemoveFromCart } = props;
 
   return (
     <Container className="d-flex align-items-center justify-content-center">
@@ -28,15 +30,17 @@ export default function GuitarCard(props) {
                   <div>
                    <strong>{guitar.type} Guitar</strong>
                   </div>
-                  <div>
+                  <div className="mb-2">
                     <strong>{guitar.price} </strong>
                   </div>
+                  <IoBagRemove size='35' style={{color: 'red'}} hidden={hiddenRemoveFromCart} onClick={() => handleOnRemoveFromCart(guitar)}/>
                 </div>
               </div>
             </div>
             <div className="d-flex flex-row justify-content-center w-100">
               <div className="buttonWrapper">
                 <Button hidden={hiddenButton} variant="outline-light" style={{backgroundColor: '#9e7315'}} onClick={() => handleOnAddToCart(guitar)}> Add To Cart</Button>
+                
               </div>
             </div>
           </Card.Body>

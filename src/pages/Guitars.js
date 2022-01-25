@@ -4,27 +4,17 @@ import GuitarCard from "../components/GuitarCard";
 import TopSection from "../components/TopSection";
 import { database } from "../firebase";
 import "../styles.css";
-import { Grid, Radio } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useAuth } from "../contexts/AuthContext";
-import {
-  Alert,
-  Button,
-  ButtonGroup,
-  Form,
-  ToggleButton,
-} from "react-bootstrap";
+import { Alert, ButtonGroup, Form, ToggleButton } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addToShoppingCart } from "../store/shoppingcart.slice";
-import { Link } from "react-router-dom";
-import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Guitars() {
   const [guitars, setGuitars] = useState([]);
   const [error, setError] = useState("");
   const { currentUser } = useAuth();
   const [filteredData, setFilteredData] = useState([]);
-  const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState("default");
   const searchItemRef = useRef();
   const dispatch = useDispatch();
@@ -81,7 +71,7 @@ export default function Guitars() {
   };
 
   useEffect(() => {
-    if (radioValue === "default"){
+    if (radioValue === "default") {
       setFilteredData(guitars);
       return;
     }
@@ -91,7 +81,7 @@ export default function Guitars() {
       return result;
     });
     setFilteredData(data);
-  }, [radioValue]);
+  }, [radioValue, guitars]);
 
   return (
     <>
@@ -164,6 +154,7 @@ export default function Guitars() {
                     <GuitarCard
                       guitar={guitar}
                       handleOnAddToCart={handleOnAddToCart}
+                      hiddenRemoveFromCart="true"
                     />
                   </Grid>
                 );

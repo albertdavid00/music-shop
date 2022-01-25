@@ -2,12 +2,14 @@ import React from "react";
 import TopSection from "../components/TopSection";
 import { useSelector } from "react-redux";
 import { shoppingCartSelector } from "../store/shoppingcart.slice";
-import { Link } from "react-router-dom";
 import GuitarCard from "../components/GuitarCard";
 import { Grid } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { removeFromShoppingCart } from "../store/shoppingcart.slice";
 
 export default function ShoppingCart() {
   const shoppingCart = useSelector(shoppingCartSelector);
+  const dispatch = useDispatch();
 
   const getItemPrice = (price, qty) => {
     let priceDigits = price.slice(0, -1);
@@ -24,6 +26,11 @@ export default function ShoppingCart() {
     });
     return total.toString() + "$";
   };
+
+  const handleOnRemoveFromCart = (item) => {
+    dispatch(removeFromShoppingCart(item));
+  }
+
   return (
     <>
       <TopSection />
@@ -47,7 +54,7 @@ export default function ShoppingCart() {
                   {shoppingCart.map((guitar) => {
                     return (
                       <Grid item xs={4} key={guitar.id} zeroMinWidth>
-                        <GuitarCard guitar={guitar} hiddenButton={"true"} />
+                        <GuitarCard guitar={guitar} hiddenButton={"true"} handleOnRemoveFromCart={handleOnRemoveFromCart} />
                       </Grid>
                     );
                   })}

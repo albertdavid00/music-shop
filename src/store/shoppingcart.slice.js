@@ -43,11 +43,14 @@ export const shoppingCartSlice = createSlice({
         }
       }
     },
+    removeAllItems: (state, action) => {
+      state.shoppingCartItems = [];
+    }
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addToShoppingCart, removeFromShoppingCart } =
+export const { addToShoppingCart, removeFromShoppingCart, removeAllItems } =
   shoppingCartSlice.actions;
 export const shoppingCartSelector = (state) => {
   return state.shoppingCartReducer.shoppingCartItems;

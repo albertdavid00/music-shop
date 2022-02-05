@@ -154,7 +154,7 @@ export default function Guitars() {
                     <GuitarCard
                       guitar={guitar}
                       handleOnAddToCart={handleOnAddToCart}
-                      hiddenRemoveFromCart="true"
+                      hiddenRemoveFromCart= {true}
                     />
                   </Grid>
                 );

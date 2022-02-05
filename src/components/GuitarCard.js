@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Container } from "react-bootstrap";
 import "../styles.css";
 import { IoBagRemove } from 'react-icons/io5';
 
 export default function GuitarCard(props) {
   const { guitar, handleOnAddToCart, hiddenButton, hiddenRemoveFromCart, handleOnRemoveFromCart } = props;
-
+  const [imgWidth, setImgWidth] = useState("240px");
+  const [imgHeight, setImgHeight] = useState("170px");
+    
   return (
     <Container className="d-flex align-items-center justify-content-center">
       <div className="w-100" style={{ maxWidth: "300px", minWidth: '265px'}}>
@@ -16,8 +18,6 @@ export default function GuitarCard(props) {
                 <img
                   src={guitar.photoURL}
                   alt="guitar"
-                  width={"240px"}
-                  height={"170px"}
                   style={{ objectFit: "contain" }}
                   className="guitarImg"
                 />
@@ -33,7 +33,7 @@ export default function GuitarCard(props) {
                   <div className="mb-2">
                     <strong>{guitar.price} </strong>
                   </div>
-                  <IoBagRemove size='35' style={{color: 'red'}} hidden={hiddenRemoveFromCart} onClick={() => handleOnRemoveFromCart(guitar)}/>
+                  <IoBagRemove size='35' style={{color: 'red', cursor: "pointer"}} hidden={hiddenRemoveFromCart} onClick={() => handleOnRemoveFromCart(guitar)}/>
                 </div>
               </div>
             </div>

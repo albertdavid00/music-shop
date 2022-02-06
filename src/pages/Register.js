@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Form, Card, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -12,10 +12,15 @@ const Register = () => {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const phoneNumberRef = useRef();
-  const { register } = useAuth();
+  const { register, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    if(currentUser)
+      return history.push("/profile");
+  });
 
   async function handleSubmit(e) {
     e.preventDefault();

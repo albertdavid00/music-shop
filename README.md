@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+## Project Contains:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Public routes
 
-## Available Scripts
+ <li> /login </li>
+ <li> /register </li>
+ <li> /forgot-password </li>
+ <li> /guitars </li>
+ <li> page not found (*)</li>
 
-In the project directory, you can run:
+### Private routes
+<li> /profile </li>
+<li> /shopping-cart </li>
 
-### `npm start`
+### Reusable Components
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<li> GuitarCard </li>
+<li> TopSection (Navbar) </li>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### State Manager
+<li> React Redux (for shopping cart)</li>
+<li> Context Hook (for authentication)</li>
 
-### `npm test`
+### API
+<li> Firebase </li>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Functionalities
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<li> User can register / login / view their profile. In case the user forgot their password, they can enter their email and will receive a generated link (on email) to set a new password.  </li>
+<li> In the guitars page, the user can view the brands, prices and types of the guitars. The user can also search guitars by their brand or model and can filter them.
+<li> The guitars can be added to the shopping cart. </li>
+<li> In the shopping cart page there is a total price automatically calculated based on the products in the cart. </li>
+<li> Each product can be removed from the cart.</li>
+<li> Once the user picked the wanted products, after entering the delivery address, they can place an order that will be saved in the database.  </li>
+<li> There is also a 404 Not Found page, in case the user enters a bad request.</li>
